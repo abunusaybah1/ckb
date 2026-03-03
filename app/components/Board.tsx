@@ -5,7 +5,7 @@ import { BoardProps } from "../types";
 
 const Board = () => {
   return (
-    <>
+    <div className="p-2 max-w-225 mx-auto">
       <h2 className="text-2xl font-bold mb-4">Cards</h2>
 
       {defaultData.map((card) => (
@@ -18,7 +18,7 @@ const Board = () => {
           dueDate={card.dueDate}
         />
       ))}
-    </>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ export const defaultData = [
         id: "3",
         title: "Card 3",
         description: "This is the third card",
-        tags: ["app"],
+        tags: ["app", "mobile"],
         dueDate: "2024-08-01",
     },
     {
@@ -33,5 +33,12 @@ export const defaultData = [
         description: "This is the fifth card",
         tags: ["web"],
         dueDate: "2024-10-05",
+    },
+    {
+        id: "6",
+        title: "Card 6",
+        description: "This is the sixth card",
+        tags: ["mobile"],
+        dueDate: "2024-12-05",
     }
 ]
