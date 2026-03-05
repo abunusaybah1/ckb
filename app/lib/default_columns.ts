@@ -1,4 +1,6 @@
-export const defaultColumns = [
+import { ColumnMeta } from "../types";
+
+export const defaultColumns: ColumnMeta[] = [
   {
     id: "todo",
     title: "To do",

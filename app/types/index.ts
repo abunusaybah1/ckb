@@ -11,3 +11,10 @@ export interface ColumnProps {
   title: string;
   cards: CardProps[];
 }
+
+export interface ColumnMeta {
+  id: "todo" | "progress" | "done";
+  title: string;
+//   cards: CardProps[];
+}
+
