@@ -3,9 +3,9 @@ import Board from "./components/Board";
 
 const page = () => {
   return (
-    <div>
+    <>
       <Board />
-    </div>
+    </>
   );
 };
 

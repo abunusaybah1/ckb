@@ -35,7 +35,7 @@ export const defaultData: CardProps[] = [
   },
   {
     id: "5",
-    status: "todo",
+    status: "pending",
     title: "Card 5",
     description: "This is the fifth card",
     tags: ["web"],

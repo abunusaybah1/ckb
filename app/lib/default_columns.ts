@@ -2,15 +2,23 @@ import { ColumnMeta } from "../types";
 
 export const defaultColumns: ColumnMeta[] = [
   {
-    id: "todo",
+    id: 1,
+    status: "todo",
     title: "To do",
   },
   {
-    id: "progress",
+    id: 2,
+    status: "progress",
     title: "Progress",
   },
   {
-    id: "done",
+    id: 3,
+    status: "done",
     title: "Done",
+  },
+  {
+    id: 4,
+    status: "pending",
+    title: "Pending",
   },
 ];

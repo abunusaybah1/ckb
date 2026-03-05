@@ -3,7 +3,7 @@ import { CardProps } from "../types";
 
 const Card = ({ title, description, tags, dueDate }: CardProps) => {
   return (
-    <div className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm relative hover:shadow-md transition">
+    <div className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm relative hover:shadow-2xl transition all">
       <div className="absolute top-3 right-3 flex flex-wrap gap-1 max-w-[60%] justify-end">
         {tags.map((tag: string, i: number) => (
           <span
