@@ -27,8 +27,14 @@ export interface NewColumnModalProps {
   onAdd: (title: string) => void;
 }
 
-export interface ColumnEditProps {
+export interface ColumnEditProps extends ColumnProps {
   columnId: number;
-  onRename: () => void;
-  onDelete: () => void;
+  onRename: (columnId: number, title: string) => void;
+  onDelete: (columnId: number) => void;
+}
+
+export interface NewCardModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAdd: (title: string) => void;
 }

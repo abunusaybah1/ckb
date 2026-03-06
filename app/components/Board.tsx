@@ -39,6 +39,26 @@ const Board = () => {
     // console.log(columns);
   };
 
+  const handleRenameColumn = (colId: number, newTitle: string) => {
+    setColumns((prev) =>
+      prev.map((c) =>
+        c.id === colId
+          ? {
+              ...c,
+              title: newTitle,
+              // status: newTitle
+              //   .trim()
+              //   .toLowerCase()
+              //   .replace(/[^a-z0-9-]/g, ""),
+            }
+          : c,
+      ),
+    );
+  };
+  const handleDeleteColumn = (colId: number) => {
+    setColumns((prev) => prev.filter((c) => c.id !== colId));
+  };
+
   return (
     <div className="min-h-screen">
       {isColumnModalOpen && (
@@ -68,6 +88,9 @@ const Board = () => {
               key={col.id}
               title={col.title}
               cards={defaultData.filter((c) => c.status === col.status)}
+              onDelete={handleDeleteColumn}
+              onRename={handleRenameColumn}
+              columnId={col.id}
             />
           ))}
         </div>
