@@ -5,8 +5,9 @@ import Column from "./Column";
 import { defaultData } from "../lib/default_cards";
 import { defaultColumns } from "../lib/default_columns";
 import { CardMeta, CardProps, ColumnMeta } from "../types";
-import NewColumnModal from "./NewColumnModal";
-import NewCardModal from "./NewCardModal";
+import NewColumnModal from "./modals/NewColumnModal";
+import NewCardModal from "./modals/NewCardModal";
+import EditCardModal from "./modals/EditCardModal";
 
 const Board = () => {
   const [columns, setColumns] = useState(defaultColumns);
@@ -15,6 +16,8 @@ const Board = () => {
   const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
 
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
+  const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
+
   const [activeColumnStatus, setActiveColumnStatus] = useState<string>("");
   const [editingCard, setEditingCard] = useState<CardProps | null>(null);
 
@@ -50,14 +53,12 @@ const Board = () => {
 
   const openAddCardModal = (status: string) => {
     setActiveColumnStatus(status);
-    setEditingCard(null);
     setIsCardModalOpen(true);
   };
 
   const openEditCardModal = (card: CardProps) => {
     setEditingCard(card);
-    setActiveColumnStatus(card.status);
-    setIsCardModalOpen(true);
+    setIsEditCardModalOpen(true);
   };
 
   const handleCreateCard = (data: CardMeta) => {
@@ -96,14 +97,6 @@ const Board = () => {
     setCards((prev) => prev.filter((c) => c.id !== id));
   };
 
-  const handleAddOrSaveCard = (data: CardMeta) => {
-    if (editingCard) {
-      handleUpdateCard(editingCard.id, data);
-    } else {
-      handleCreateCard(data);
-    }
-  };
-
   return (
     <div className="min-h-screen">
       {isColumnModalOpen && (
@@ -118,7 +111,19 @@ const Board = () => {
         <NewCardModal
           isOpen={isCardModalOpen}
           onClose={() => setIsCardModalOpen(false)}
-          onAdd={handleAddOrSaveCard}
+          onAdd={handleCreateCard}
+        />
+      )}
+
+      {isEditCardModalOpen && (
+        <EditCardModal
+          isOpen={isEditCardModalOpen}
+          onClose={() => {
+            setIsEditCardModalOpen(false);
+            setEditingCard(null);
+          }}
+          card={editingCard}
+          onSave={handleUpdateCard}
         />
       )}
 

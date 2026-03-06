@@ -43,11 +43,6 @@ export interface NewCardModalProps {
   onAdd: (data: CardMeta) => void;
 }
 
-export interface CardEditProps extends CardProps {
-  onEdit: (card: CardProps) => void;
-  onDelete: (cardId: number) => void;
-}
-
 export interface EditCardModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -55,9 +50,31 @@ export interface EditCardModalProps {
   onSave: (id: number, data: CardMeta) => void;
 }
 
+export interface CardEditProps extends CardProps {
+  onEdit: (card: CardProps) => void;
+  onDelete: (cardId: number) => void;
+}
+
 export interface ColumnCrudProps extends ColumnEditProps {
   status: string;
   onAddCard: (status: string) => void;
   onEditCard: (card: CardProps) => void;
   onDeleteCard: (id: number) => void;
+}
+
+export interface BoardItemProps {
+  id: number;
+  title: string;
+  description: string;
+  createdAt: string;
+}
+
+export interface NewBoardModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAdd: (title: string, description: string) => void;
+}
+
+export interface BoardCardProps extends BoardItemProps {
+  onDelete: (boardId: number) => void;
 }

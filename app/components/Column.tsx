@@ -28,17 +28,18 @@ const Column = ({
   };
 
   return (
-    <div className="w-full sm:w-70 lg:w-[320px] bg-slate-100 border border-slate-200 rounded-xl p-3">
+    <div className="w-full sm:w-[280px] lg:w-[320px] bg-slate-100 border border-slate-200 rounded-xl p-3">
       <div className="flex items-center justify-between mb-3">
         {isEdit ? (
-          <div>
+          <div className="flex w-full">
             <input
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value)}
               autoFocus
+              className="border rounded px-2 py-1 flex-1 border-blue-800 focus:outline-none focus:ring-1 focus:ring-blue-800 focus:border-transparent"
             />
-            <button onClick={handleSave}>Save</button>
+            <button className ="bg-blue-500 text-white px-3 py-1.5 rounded-l border border-slate-300 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition-colors duration-300" onClick={handleSave}>Save</button>
           </div>
         ) : (
           <div className="flex justify-between w-full px-3">
@@ -63,7 +64,7 @@ const Column = ({
         )}
       </div>
 
-      <div className="flex flex-col flex-wrap gap-4 justify-start">
+      <div className="flex flex-col gap-4 justify-start">
         {cards.map((card) => (
           <Card
             key={card.id}

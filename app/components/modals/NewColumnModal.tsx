@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { NewColumnModalProps } from "../types";
-import { defaultColumns } from "../lib/default_columns";
+import { NewColumnModalProps } from "../../types";
+import { defaultColumns } from "../../lib/default_columns";
 
 const NewColumnModal: React.FC<NewColumnModalProps> = ({
   isOpen,
