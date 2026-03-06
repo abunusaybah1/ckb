@@ -1,20 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
+import { BoardItemProps, CardMeta, CardProps, ColumnMeta } from "../types";
 import Column from "./Column";
-import { defaultData } from "../lib/default_cards";
-import { defaultColumns } from "../lib/default_columns";
-import { CardMeta, CardProps, ColumnMeta } from "../types";
 import NewColumnModal from "./modals/NewColumnModal";
 import NewCardModal from "./modals/NewCardModal";
 import EditCardModal from "./modals/EditCardModal";
 
-const Board = () => {
-  const [columns, setColumns] = useState(defaultColumns);
-  const [cards, setCards] = useState<CardProps[]>(defaultData);
+type BoardProps = {
+  board: BoardItemProps;
+};
+
+const Board = ({ board }: BoardProps) => {
+  const [columns, setColumns] = useState(board.columns);
+  const [cards, setCards] = useState<CardProps[]>(board.cards);
 
   const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
-
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
 
@@ -67,7 +68,7 @@ const Board = () => {
     setCards((prev) => [
       ...prev,
       {
-        id: Date.now(),
+        id: board.cards.length + prev.length + 1,
         status: activeColumnStatus,
         title: data.title,
         description: data.description,
@@ -129,7 +130,10 @@ const Board = () => {
 
       <div className="mx-auto w-full max-w-6xl px-3 sm:px-4 lg:px-6 py-4 flex flex-col gap-5">
         <div className="flex gap-4 justify-between items-center overflow-x-hidden sm:flex-row sm:gap-4 sm:overflow-x-auto sm:pb-3 lg:flex-wrap lg:overflow-x-visible">
-          <h2 className="text-blue-800 text-2xl font-bold">CKB</h2>
+          <div>
+            <h2 className="text-blue-800 text-2xl font-bold">{board.title}</h2>
+            <p className="text-slate-600 text-sm mt-1">{board.description}</p>
+          </div>
 
           <button
             className="bg-blue-800 text-white px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-white hover:text-blue-800 hover:border-blue-800 transition-colors duration-300"
@@ -142,20 +146,26 @@ const Board = () => {
         <div className="h-px bg-blue-200 w-full" />
 
         <div className="flex flex-wrap gap-4">
-          {columns.map((col: ColumnMeta) => (
-            <Column
-              key={col.id}
-              title={col.title}
-              status={col.status}
-              cards={cards.filter((c) => c.status === col.status)}
-              onDelete={handleDeleteColumn}
-              onRename={handleRenameColumn}
-              columnId={col.id}
-              onAddCard={openAddCardModal}
-              onEditCard={openEditCardModal}
-              onDeleteCard={handleDeleteCard}
-            />
-          ))}
+          {columns ? (
+            columns.map((col: ColumnMeta) => (
+              <Column
+                key={col.id}
+                title={col.title}
+                status={col.status}
+                cards={cards.filter((c) => c.status === col.status)}
+                onDelete={handleDeleteColumn}
+                onRename={handleRenameColumn}
+                columnId={col.id}
+                onAddCard={openAddCardModal}
+                onEditCard={openEditCardModal}
+                onDeleteCard={handleDeleteCard}
+              />
+            ))
+          ) : (
+            <p className="text-slate-500 italic">
+              No columns yet. Start by adding one!
+            </p>
+          )}
         </div>
       </div>
     </div>

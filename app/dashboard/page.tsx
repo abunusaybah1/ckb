@@ -5,6 +5,7 @@ import { defaultBoards } from "../lib/default_board";
 import { BoardItemProps } from "@/app/types/index";
 import BoardCard from "../components/BoardCard";
 import NewBoardModal from "../components/modals/NewBoardModal";
+import { defaultColumns } from "../lib/default_columns";
 
 const Dashboard = () => {
   const [boards, setBoards] = useState<BoardItemProps[]>(defaultBoards);
@@ -18,10 +19,12 @@ const Dashboard = () => {
     setBoards((prev) => [
       ...prev,
       {
-        id: Date.now(),
+        id: boards.length + 1,
         title,
         description,
         createdAt: new Date().toISOString().split("T")[0],
+        columns: defaultColumns,
+        cards: [],
       },
     ]);
   };

@@ -48,7 +48,7 @@ const NewCardModal: React.FC<NewCardModalProps> = ({
 
   return (
     <div
-      className="fixed z-[1000] inset-0 bg-black/40 flex items-center justify-center p-4"
+      className="fixed z-1000 inset-0 bg-black/40 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div

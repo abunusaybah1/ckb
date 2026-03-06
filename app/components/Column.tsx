@@ -28,7 +28,7 @@ const Column = ({
   };
 
   return (
-    <div className="w-full sm:w-[280px] lg:w-[320px] bg-slate-100 border border-slate-200 rounded-xl p-3">
+    <div className="w-full sm:w-70 lg:w-[320px] bg-slate-100 border border-slate-200 rounded-xl p-3">
       <div className="flex items-center justify-between mb-3">
         {isEdit ? (
           <div className="flex w-full">

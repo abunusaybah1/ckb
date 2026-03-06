@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { BoardCardProps } from "../types";
 
 const BoardCard = ({
@@ -29,9 +30,11 @@ const BoardCard = ({
       </div>
 
       <div className="flex justify-end">
-        <button className="bg-blue-800 text-white px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-white hover:text-blue-800 hover:border-blue-800 transition-colors duration-300">
-          Open Board
-        </button>
+        <Link href={`/board/${id}`}>
+          <button className="bg-blue-800 text-white px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-white hover:text-blue-800 hover:border-blue-800 transition-colors duration-300">
+            Open Board
+          </button>
+        </Link>
       </div>
     </div>
   );

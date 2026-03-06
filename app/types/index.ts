@@ -67,14 +67,20 @@ export interface BoardItemProps {
   title: string;
   description: string;
   createdAt: string;
+  columns: ColumnMeta[];
+  cards: CardProps[];
+}
+
+export interface BoardCardProps {
+  id: number;
+  title: string;
+  description: string;
+  createdAt: string;
+  onDelete: (boardId: number) => void;
 }
 
 export interface NewBoardModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAdd: (title: string, description: string) => void;
-}
-
-export interface BoardCardProps extends BoardItemProps {
-  onDelete: (boardId: number) => void;
 }
