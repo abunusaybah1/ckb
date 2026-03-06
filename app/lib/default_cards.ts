@@ -2,7 +2,7 @@ import { CardProps } from "../types";
 
 export const defaultData: CardProps[] = [
   {
-    id: "1",
+    id: 1,
     status: "todo",
     title: "Card 1",
     description: "This is the first card",
@@ -10,7 +10,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-06-30",
   },
   {
-    id: "2",
+    id: 2,
     status: "todo",
     title: "Card 2",
     description: "This is the second card",
@@ -18,7 +18,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-07-15",
   },
   {
-    id: "3",
+    id: 3,
     status: "progress",
     title: "Card 3",
     description: "This is the third card",
@@ -26,7 +26,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-08-01",
   },
   {
-    id: "4",
+    id: 4,
     status: "done",
     title: "Card 4",
     description: "This is the fourth card",
@@ -34,7 +34,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-09-10",
   },
   {
-    id: "5",
+    id: 5,
     status: "pending",
     title: "Card 5",
     description: "This is the fifth card",
@@ -42,7 +42,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-10-05",
   },
   {
-    id: "6",
+    id: 6,
     status: "done",
     title: "Card 6",
     description: "This is the sixth card",
@@ -50,7 +50,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-10-05",
   },
   {
-    id: "7",
+    id: 7,
     status: "progress",
     title: "Card 7",
     description: "This is the seventh card",
@@ -58,7 +58,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-07-15",
   },
   {
-    id: "8",
+    id: 8,
     status: "done",
     title: "Card 8",
     description: "This is the eight card",
@@ -66,7 +66,7 @@ export const defaultData: CardProps[] = [
     dueDate: "2024-11-02",
   },
   {
-    id: "9",
+    id: 9,
     status: "todo",
     title: "Card 9",
     description: "This is the ninth card",

@@ -5,23 +5,44 @@ const NewCardModal: React.FC<NewCardModalProps> = ({
   isOpen,
   onClose,
   onAdd,
-  //   id,
-  //   setId,
 }) => {
-  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [tagsText, setTags] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   useEffect(() => {
     if (isOpen) {
-      setValue("");
+      setTitle("");
+      setDescription("");
+      setTags("");
+      setDueDate("");
     }
   }, [isOpen]);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!value) return;
+    const newTitle = title.trim();
+    if (!newTitle.trim()) return;
+
+    const newDescription = description.trim();
+
+    const tags = tagsText
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
+
+    const newDueDate = dueDate.trim();
+
+    const newCard = {
+      title: newTitle,
+      description: newDescription,
+      tags,
+      dueDate: newDueDate,
+    };
+
+    onAdd(newCard);
     onClose();
-    onAdd(value);
-    // setId(defaultColumns.length++);
   };
 
   return (
@@ -42,19 +63,33 @@ const NewCardModal: React.FC<NewCardModalProps> = ({
         <form className="flex gap-2">
           <input
             type="text"
-            value={value}
-            placeholder="Enter column name"
+            value={title}
+            placeholder="Card title"
             className=" border-blue-800 border-2 rounded-lg px-3 py-2 flex-1"
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             autoFocus
           />
+          <textarea
+            value={description}
+            placeholder="Description..."
+            className=""
+            onChange={(e) => setDescription(e.target.value)}
+            rows={3}
+          ></textarea>
           <input
-            type="button"
-            value="Add"
-            onClick={handleAdd}
+            type="text"
+            value={tagsText}
+            placeholder="Tags (comma separated), e.g, web, app, mobile"
+            onChange={(e) => setTags(e.target.value)}
+          />
+
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
             className="bg-blue-800 text-white px-4 py-2 rounded-lg"
           />
-          {/* <input type="text" value={id} /> */}
+          <input type="button" onClick={handleAdd} />
         </form>
       </div>
     </div>

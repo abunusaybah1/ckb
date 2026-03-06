@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "./Card";
-import { ColumnEditProps, ColumnProps } from "../types";
+import { ColumnCrudProps, ColumnProps } from "../types";
 
 const Column = ({
   title,
@@ -8,10 +8,13 @@ const Column = ({
   columnId,
   onRename,
   onDelete,
-}: ColumnEditProps) => {
+  status,
+  onAddCard,
+  onEditCard,
+  onDeleteCard,
+}: ColumnCrudProps) => {
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState(title);
-  // const [title, setTitle]=useState(title)
 
   const handleSave = () => {
     setIsEdit(false);
@@ -25,8 +28,6 @@ const Column = ({
     setValue(title);
     setIsEdit(true);
   };
-
-  // const handleDelete = () => {};
 
   return (
     <div className="w-full sm:w-70 lg:w-[320px] bg-slate-100 border border-slate-200 rounded-xl p-3">
@@ -63,21 +64,22 @@ const Column = ({
           </div>
         )}
       </div>
+
       <div className="flex flex-col flex-wrap gap-4 justify-start">
         {cards.map((card) => (
           <Card
             key={card.id}
-            id={card.id}
-            status={card.status}
-            title={card.title}
-            description={card.description}
-            tags={card.tags}
-            dueDate={card.dueDate}
+            {...card}
+            onEdit={onEditCard}
+            onDelete={onDeleteCard}
           />
         ))}
 
         <div className="flex items-center justify-center">
-          <button className="w-60 bg-blue-500 text-white px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition-colors duration-300">
+          <button
+            className="w-60 bg-blue-500 text-white px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-white hover:text-blue-500 hover:border-blue-500 transition-colors duration-300"
+            onClick={() => onAddCard(status)}
+          >
             Add Card
           </button>
         </div>
