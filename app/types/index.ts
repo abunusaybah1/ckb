@@ -16,14 +16,11 @@ export interface ColumnMeta {
   id: number;
   status: string;
   title: string;
-  //   cards: CardProps[];
 }
 
 export interface NewColumnModalProps {
-  // id: number;
   isOpen: boolean;
   onClose: () => void;
-  // setId: () => number;
   onAdd: (title: string) => void;
 }
 
@@ -46,22 +43,21 @@ export interface NewCardModalProps {
   onAdd: (data: CardMeta) => void;
 }
 
-// export interface CardEditProps extends CardProps {
-//   columnId: number;
-//   onRename: (card: CardProps) => void;
-//   onDelete: (cardId: number) => void;
-// }
+export interface CardEditProps extends CardProps {
+  onEdit: (card: CardProps) => void;
+  onDelete: (cardId: number) => void;
+}
 
-// export interface EditCardModalProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-//   card: CardProps | null;
-//   onSave: (id: number, data: CardMeta) => void;
-// }
+export interface EditCardModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  card: CardProps | null;
+  onSave: (id: number, data: CardMeta) => void;
+}
 
 export interface ColumnCrudProps extends ColumnEditProps {
   status: string;
   onAddCard: (status: string) => void;
   onEditCard: (card: CardProps) => void;
-  onDeleteCard: (id: string) => void;
+  onDeleteCard: (id: number) => void;
 }

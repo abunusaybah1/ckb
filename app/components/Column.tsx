@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "./Card";
-import { ColumnCrudProps, ColumnProps } from "../types";
+import { ColumnCrudProps } from "../types";
 
 const Column = ({
   title,
@@ -20,8 +20,6 @@ const Column = ({
     setIsEdit(false);
     if (!value.trim()) return;
     onRename(columnId, value.trim());
-
-    // title = value;
   };
 
   const handleEdit = () => {

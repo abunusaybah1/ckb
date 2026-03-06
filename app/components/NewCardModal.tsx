@@ -54,7 +54,7 @@ const NewCardModal: React.FC<NewCardModalProps> = ({
         className="bg-white w-full max-w-md rounded-xl p-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3 ">
           <h2 className="text-xl font-bold">New Card</h2>
           <button onClick={onClose} className="text-xl ">
             x
@@ -89,7 +89,7 @@ const NewCardModal: React.FC<NewCardModalProps> = ({
             onChange={(e) => setDueDate(e.target.value)}
             className="bg-blue-800 text-white px-4 py-2 rounded-lg"
           />
-          <input type="button" onClick={handleAdd} />
+          <input type="button" onClick={handleAdd} value="Add"/>
         </form>
       </div>
     </div>

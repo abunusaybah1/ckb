@@ -1,27 +1,35 @@
 import React from "react";
-import { CardProps } from "../types";
+import { CardEditProps } from "../types";
 
 const Card = ({
   id,
+  status,
   title,
   description,
   tags,
   dueDate,
   onEdit,
   onDelete,
-  status,
-}: CardProps) => {
+}: CardEditProps) => {
   return (
     <div className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm relative">
       <div className="absolute top-2 right-2 flex gap-2">
         <span
           className="font-bold cursor-pointer text-slate-500 hover:text-black transition-all duration-400"
           onClick={() =>
-            onEdit({ id, title, description, tags, dueDate, status })
+            onEdit({
+              id,
+              status,
+              title,
+              description,
+              tags,
+              dueDate,
+            })
           }
         >
           &#9998;
         </span>
+
         <span
           className="font-bold cursor-pointer text-slate-500 hover:text-black transition-all duration-400"
           onClick={() => onDelete(id)}
